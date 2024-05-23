@@ -34,16 +34,14 @@ export default {
     this.fetchProducts();
   },
   methods: {
-    fetchProducts() {
-      productService.getAll()
-        .then(fragrances => {
-          console.log("Fetched fragrances: ", fragrances); // Log fetched products
-          this.fragrances = fragrances.map(fragrance => ({ ...fragrance, addedToCart: false }));
-        })
-        .catch(error => {
-          console.error("Error fetching products: ", error); // Log any errors
-          this.error = error;
-        });
+    async fetchProducts() {
+      try {
+        const fragrances = await productService.getAll();
+        this.fragrances = fragrances.map(fragrance => ({ ...fragrance, addedToCart: false }));
+      } catch (error) {
+        this.error = error;
+        console.error("Error fetching products:", error);
+      }
     },
     addToCart(fragrance) {
       let userId = localStorage.getItem('user_id');
@@ -69,20 +67,16 @@ export default {
       product.classList.remove('parallax');
     },
     beforeEnter(el) {
-      if (el) {
-        el.style.opacity = 0;
-      }
+      el.style.opacity = 0;
     },
     enter(el, done) {
-      if (el) {
-        const delay = el.dataset.index * this.staggerDelay;
-        setTimeout(() => {
-          el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-          el.style.opacity = 1;
-          el.style.transform = 'translateY(0)';
-          done();
-        }, delay);
-      }
+      const delay = el.dataset.index * this.staggerDelay;
+      setTimeout(() => {
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        el.style.opacity = 1;
+        el.style.transform = 'translateY(0)';
+        done();
+      }, delay);
     }
   }
 };
