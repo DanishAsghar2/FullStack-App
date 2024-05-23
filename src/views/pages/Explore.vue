@@ -15,23 +15,34 @@
       </div>
     </transition-group>
     <button class="explore-page2-btn" @click="goToExplorepage2">See More</button>
+    <div>
+      <h1>Data from Backend</h1>
+      <pre>{{ data }}</pre>
+    </div>
   </div>
 </template>
 
 <script>
 import { cartService } from '../../services/cartServices';
 import { productService } from '../../services/productServices';
+import { getData } from '../../services/api';
 
 export default {
   data() {
     return {
       fragrances: [],
       error: "",
-      staggerDelay: 100 // Delay between each product animation (in milliseconds)
+      staggerDelay: 100, // Delay between each product animation (in milliseconds)
+      data: null // Added to store data from the backend
     };
   },
-  created() {
+  async created() {
     this.fetchProducts();
+    try {
+      this.data = await getData(); // Fetch data from the backend
+    } catch (error) {
+      console.error('Error:', error);
+    }
   },
   methods: {
     fetchProducts() {
@@ -57,12 +68,10 @@ export default {
       this.$router.push('/explorepage2');
     },
     applyParallax(event) {
-    
       const product = event.currentTarget;
       product.classList.add('parallax');
     },
     resetParallax(event) {
-
       const product = event.currentTarget;
       product.classList.remove('parallax');
     },
@@ -83,6 +92,7 @@ export default {
 </script>
 
 <style>
+/* Your existing styles */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -230,7 +240,6 @@ export default {
   transform: scale(0.95);
 }
 
-
 .parallax .product-container {
   transform: scale(1.1);
 }
@@ -259,7 +268,6 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
   animation: glow 2s infinite alternate;
 }
-
 
 .fade-enter-active {
   transition: opacity 0.5s, transform 0.5s;
