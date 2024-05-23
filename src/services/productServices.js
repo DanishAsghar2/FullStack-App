@@ -1,4 +1,4 @@
-const API_URL = "https://danishasgharbackend.glitch.me"; // Update with your deployed backend URL
+const API_URL = "https://danishasgharbackend.glitch.me";
 
 const getAll = () => {
     return fetch(`${API_URL}/products`)
@@ -11,11 +11,11 @@ const getAll = () => {
         }
     })
     .then((resJson) => {
-        return resJson
+        return resJson;
     })
     .catch((error) => {
-        console.log("err", error)
-    })
+        console.log("err", error);
+    });
 }
 
 const getOne = (id) => {
@@ -29,12 +29,12 @@ const getOne = (id) => {
         }
     })
     .then((resJson) => {
-        return resJson
+        return resJson;
     })
     .catch((error) => {
-        console.log("err", error)
-        return Promise.reject(error)
-    })
+        console.log("err", error);
+        return Promise.reject(error);
+    });
 }
 
 const getByCustom = (custom) => {
@@ -48,12 +48,12 @@ const getByCustom = (custom) => {
         }
     })
     .then((resJson) => {
-        return resJson
+        return resJson;
     })
     .catch((error) => {
-        console.log("err", error)
-        return Promise.reject(error)
-    })
+        console.log("err", error);
+        return Promise.reject(error);
+    });
 }
 
 const create = (name, price, type, description, base, heart, top, custom) => {
@@ -61,14 +61,14 @@ const create = (name, price, type, description, base, heart, top, custom) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            "name": name,
-            "price": price, 
-            "type": type,
-            "description": description,
-            "base": base,
-            "heart": heart,
-            "top": top,
-            "custom": custom
+            name,
+            price, 
+            type,
+            description,
+            base,
+            heart,
+            top,
+            custom
         })
     })
     .then((response) => {
@@ -76,22 +76,22 @@ const create = (name, price, type, description, base, heart, top, custom) => {
             return response.json();
         }
         else if (response.status === 401) {
-            throw "unauthorised"
+            throw "unauthorised";
         }
         else if (response.status === 404) {
-            throw "not found"
+            throw "not found";
         }
         else {
-            throw "something went wrong"
+            throw "something went wrong";
         }
     })
     .then((resJson) => {
-        return resJson
+        return resJson;
     })
     .catch((error) => {
-        console.log("err", error)
-        return Promise.reject(error)
-    })
+        console.log("err", error);
+        return Promise.reject(error);
+    });
 }
 
 export const productService = {

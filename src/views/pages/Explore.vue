@@ -15,17 +15,11 @@
       </div>
     </transition-group>
     <button class="explore-page2-btn" @click="goToExplorepage2">See More</button>
-    <div>
-      <h1>Data from Backend</h1>
-      <pre>{{ data }}</pre>
-    </div>
   </div>
 </template>
 
 <script>
 import { cartService } from '../../services/cartServices';
-import { productService } from '../../services/productServices';
-// src/views/pages/Explore.vue
 import { productService } from '../../services/productServices';
 
 export default {
@@ -41,15 +35,11 @@ export default {
   },
   methods: {
     fetchProducts() {
-      productService.getByCustom(0)
+      productService.getAll()
         .then(fragrances => {
-          console.log('Fetched products:', fragrances); // Add this line
           this.fragrances = fragrances.map(fragrance => ({ ...fragrance, addedToCart: false }));
         })
-        .catch(error => {
-          console.error('Error in fetchProducts:', error); // Add this line
-          this.error = error;
-        });
+        .catch(error => this.error = error);
     },
     addToCart(fragrance) {
       let userId = localStorage.getItem('user_id');
@@ -88,7 +78,6 @@ export default {
     }
   }
 };
-
 </script>
 
 <style>
