@@ -79,15 +79,13 @@ export default {
       }, delay);
     },
     getImageSrc(name) {
-      // Use require to resolve the path correctly
-      return new URL(`@/views/assets/${name}.png`, import.meta.url).href;
+      return `/src/views/assets/${name}.png`;
     }
   }
 };
 </script>
 
 <style>
-/* Your existing styles */
 .container {
   max-width: 1200px;
   margin: 0 auto;
