@@ -1,5 +1,7 @@
+const API_URL = "https://danishasgharbackend.glitch.me"; // Update with your deployed backend URL
+
 const getAll = () => {
-    return fetch("http://localhost:3000/products")
+    return fetch(`${API_URL}/products`)
     .then((response) => {
         if(response.status === 200) {
             return response.json();
@@ -17,7 +19,7 @@ const getAll = () => {
 }
 
 const getOne = (id) => {
-    return fetch("http://localhost:3000/products/" + id)
+    return fetch(`${API_URL}/products/` + id)
     .then((response) => {
         if(response.status === 200) {
             return response.json();
@@ -36,7 +38,7 @@ const getOne = (id) => {
 }
 
 const getByCustom = (custom) => {
-    return fetch("http://localhost:3000/products/custom/" + custom)
+    return fetch(`${API_URL}/products/custom/` + custom)
     .then((response) => {
         if(response.status === 200) {
             return response.json();
@@ -55,7 +57,7 @@ const getByCustom = (custom) => {
 }
 
 const create = (name, price, type, description, base, heart, top, custom) => {
-    return fetch("http://localhost:3000/products", {
+    return fetch(`${API_URL}/products`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

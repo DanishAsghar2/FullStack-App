@@ -25,32 +25,31 @@
 <script>
 import { cartService } from '../../services/cartServices';
 import { productService } from '../../services/productServices';
-import { getData } from '../../services/api';
+// src/views/pages/Explore.vue
+import { productService } from '../../services/productServices';
 
 export default {
   data() {
     return {
       fragrances: [],
       error: "",
-      staggerDelay: 100, // Delay between each product animation (in milliseconds)
-      data: null // Added to store data from the backend
+      staggerDelay: 100 // Delay between each product animation (in milliseconds)
     };
   },
-  async created() {
+  created() {
     this.fetchProducts();
-    try {
-      this.data = await getData(); // Fetch data from the backend
-    } catch (error) {
-      console.error('Error:', error);
-    }
   },
   methods: {
     fetchProducts() {
       productService.getByCustom(0)
         .then(fragrances => {
+          console.log('Fetched products:', fragrances); // Add this line
           this.fragrances = fragrances.map(fragrance => ({ ...fragrance, addedToCart: false }));
         })
-        .catch(error => this.error = error);
+        .catch(error => {
+          console.error('Error in fetchProducts:', error); // Add this line
+          this.error = error;
+        });
     },
     addToCart(fragrance) {
       let userId = localStorage.getItem('user_id');
@@ -89,6 +88,7 @@ export default {
     }
   }
 };
+
 </script>
 
 <style>
