@@ -80,7 +80,7 @@ export default {
     },
     getImageSrc(name) {
       // Use require to resolve the path correctly
-      return require(`../../assets/${name}.png`)
+      return new URL(`@/views/assets/${name}.png`, import.meta.url).href;
     }
   }
 };
