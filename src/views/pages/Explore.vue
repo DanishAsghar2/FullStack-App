@@ -5,7 +5,7 @@
       <!-- Product items with "Add to Cart" buttons -->
       <div v-for="(fragrance, index) in fragrances" :key="index" class="product" :data-index="index" tabindex="0" @mouseover="applyParallax" @mouseleave="resetParallax" @keydown.enter="addToCart(fragrance)">
         <div class="product-container" @click="addToCart(fragrance)">
-          <img :src="getImageUrl(fragrance.name)" :alt="fragrance.name" class="product-image">
+          <img :src="`/assets/${fragrance.name}.png`" :alt="fragrance.name" class="product-image">
         </div>
         <p class="product-name">{{ fragrance.name }}</p>
         <p class="product-price">£{{ fragrance.price }}</p>
@@ -42,9 +42,6 @@ export default {
         this.error = error;
         console.error("Error fetching products:", error);
       }
-    },
-    getImageUrl(name) {
-      return new URL(`../../assets/${name}.png`, import.meta.url).href;
     },
     addToCart(fragrance) {
       let userId = localStorage.getItem('user_id');
