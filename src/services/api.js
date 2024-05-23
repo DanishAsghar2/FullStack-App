@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://danishasgharbackend.glitch.me'; // Make sure this URL is correct
+const API_URL = 'https://danishasgharbackend.glitch.me'; // Ensure this URL is correct
 
 export const getData = async () => {
   try {
