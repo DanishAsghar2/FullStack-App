@@ -37,11 +37,12 @@ export default {
     fetchProducts() {
       productService.getAll()
         .then(fragrances => {
+          console.log("Fetched fragrances: ", fragrances); // Log fetched products
           this.fragrances = fragrances.map(fragrance => ({ ...fragrance, addedToCart: false }));
         })
         .catch(error => {
+          console.error("Error fetching products: ", error); // Log any errors
           this.error = error;
-          console.error("Error fetching products:", error);
         });
     },
     addToCart(fragrance) {
@@ -53,10 +54,7 @@ export default {
           console.log('Product added to cart:', fragrance.name);
           fragrance.addedToCart = true;
         })
-        .catch(error => {
-          this.error = error;
-          console.error("Error adding to cart:", error);
-        });
+        .catch(error => this.error = error);
     },
     goToExplorepage2() {
       // Navigate to ExplorePage2
@@ -71,20 +69,25 @@ export default {
       product.classList.remove('parallax');
     },
     beforeEnter(el) {
-      el.style.opacity = 0;
+      if (el) {
+        el.style.opacity = 0;
+      }
     },
     enter(el, done) {
-      const delay = el.dataset.index * this.staggerDelay;
-      setTimeout(() => {
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        el.style.opacity = 1;
-        el.style.transform = 'translateY(0)';
-        done();
-      }, delay);
+      if (el) {
+        const delay = el.dataset.index * this.staggerDelay;
+        setTimeout(() => {
+          el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+          done();
+        }, delay);
+      }
     }
   }
 };
 </script>
+
 
 <style>
 .container {
