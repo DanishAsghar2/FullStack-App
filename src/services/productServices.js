@@ -1,13 +1,10 @@
-const API_URL = "https://danishasgharbackend.glitch.me";
-
 const getAll = () => {
     return fetch(`${API_URL}/products`)
     .then((response) => {
         if(response.status === 200) {
             return response.json();
-        }
-        else {
-            throw "something went wrong"
+        } else {
+            throw "something went wrong";
         }
     })
     .then((resJson) => {
@@ -19,13 +16,12 @@ const getAll = () => {
 }
 
 const getOne = (id) => {
-    return fetch(`${API_URL}/products/` + id)
+    return fetch(`${API_URL}/products/${id}`)
     .then((response) => {
         if(response.status === 200) {
             return response.json();
-        }
-        else {
-            throw "something went wrong"
+        } else {
+            throw "something went wrong";
         }
     })
     .then((resJson) => {
@@ -38,13 +34,12 @@ const getOne = (id) => {
 }
 
 const getByCustom = (custom) => {
-    return fetch(`${API_URL}/products/custom/` + custom)
+    return fetch(`${API_URL}/products/custom/${custom}`)
     .then((response) => {
         if(response.status === 200) {
             return response.json();
-        }
-        else {
-            throw "something went wrong"
+        } else {
+            throw "something went wrong";
         }
     })
     .then((resJson) => {
@@ -61,27 +56,24 @@ const create = (name, price, type, description, base, heart, top, custom) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            name,
-            price, 
-            type,
-            description,
-            base,
-            heart,
-            top,
-            custom
+            "name": name,
+            "price": price, 
+            "type": type,
+            "description": description,
+            "base": base,
+            "heart": heart,
+            "top": top,
+            "custom": custom
         })
     })
     .then((response) => {
         if(response.status === 201) {
             return response.json();
-        }
-        else if (response.status === 401) {
+        } else if (response.status === 401) {
             throw "unauthorised";
-        }
-        else if (response.status === 404) {
+        } else if (response.status === 404) {
             throw "not found";
-        }
-        else {
+        } else {
             throw "something went wrong";
         }
     })
@@ -99,4 +91,4 @@ export const productService = {
     getOne,
     getByCustom,
     create
-}
+};

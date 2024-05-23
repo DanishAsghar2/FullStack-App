@@ -39,7 +39,10 @@ export default {
         .then(fragrances => {
           this.fragrances = fragrances.map(fragrance => ({ ...fragrance, addedToCart: false }));
         })
-        .catch(error => this.error = error);
+        .catch(error => {
+          this.error = error;
+          console.error("Error fetching products:", error);
+        });
     },
     addToCart(fragrance) {
       let userId = localStorage.getItem('user_id');
@@ -50,7 +53,10 @@ export default {
           console.log('Product added to cart:', fragrance.name);
           fragrance.addedToCart = true;
         })
-        .catch(error => this.error = error);
+        .catch(error => {
+          this.error = error;
+          console.error("Error adding to cart:", error);
+        });
     },
     goToExplorepage2() {
       // Navigate to ExplorePage2
@@ -81,7 +87,6 @@ export default {
 </script>
 
 <style>
-/* Your existing styles */
 .container {
   max-width: 1200px;
   margin: 0 auto;
