@@ -42,48 +42,6 @@
       </div>
     </div>
 
-    <!-- Featured Products -->
-    <div class="featured-products">
-      <h2 class="featured-products-title">Featured Products</h2>
-      <div class="product-list">
-        <!-- Product 1 -->
-        <div class="product product1" @click="redirectToExplorePage()">
-          <img src="../assets/Stars Et Oud.png" alt="Stars Et Oud">
-          <p class="product-name">Stars Et Oud</p>
-          <p class="product-description">Dark. Fruity and Oud</p>
-        </div>
-        <!-- Product 2 -->
-        <div class="product product2" @click="redirectToExplorePage()">
-          <img src="../assets/1819.png" alt="1819">
-          <p class="product-name">1819</p>
-          <p class="product-description">Sweet and Musky</p>
-        </div>
-        <!-- Product 3 -->
-        <div class="product product3" @click="redirectToExplorePage()">
-          <img src="../assets/Lust's Delight.png" alt="Lust's Delight">
-          <p class="product-name">Lust's Delight</p>
-          <p class="product-description">Sweet and creamy</p>
-        </div>
-        <!-- Product 4 -->
-        <div class="product product4" @click="redirectToExplorePage()">
-          <img src="../assets/Flowers In Japan.png" alt="Flowers In Japan">
-          <p class="product-name">Flowers In Japan</p>
-          <p class="product-description">Japanese Fruit and yuza</p>
-        </div>
-        <!-- Product 5 -->
-        <div class="product product5" @click="redirectToExplorePage()">
-          <img src="../assets/Nuit d'Orleans.png" alt="Nuit d'Orleans">
-          <p class="product-name">Nuit d'Orleans</p>
-          <p class="product-description">Mysterious and Fruity</p>
-        </div>
-        <!-- Product 6 -->
-        <div class="product product6" @click="redirectToExplorePage()">
-          <img src="../assets/Torino.png" alt="Torino">
-          <p class="product-name">Torino</p>
-          <p class="product-description">Fresh and Musky</p>
-        </div>
-      </div>
-    </div>
 
     <!-- Footer -->
     <footer>

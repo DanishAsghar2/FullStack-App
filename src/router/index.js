@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 
 import Home from "../views/pages/Home.vue"
 import Collection from"../views/pages/Collection.vue"
@@ -15,8 +15,6 @@ import Checkout from '../views/pages/Checkout.vue'
 import Order from '../views/pages/Order.vue'
 import Chatbox from '../views/pages/Chatbox.vue'
 
-
-
 const ifAuthenticated = (to, from, next) => {
     const loggedin = localStorage.getItem('session_token')
     if(loggedin) {
@@ -26,33 +24,25 @@ const ifAuthenticated = (to, from, next) => {
     next('/login')
 }
 
-
 const routes = [
-    { path: "/", component: Home},
-    { path: "/collection", component: Collection},
-    { path: "/login", component: Login},
-    { path: "/explore", component: Explore},
-    { path: "/cart", component: Cart},
-    { path: "/aboutus", component: Aboutus},
-    { path: "/byyou", component: Byyou},
-    { path: "/register", component: Register},
-    { path: "/forgotpassword", component: Forgotpassword},
-    { path: "/product/:id", component: Product},
-    { path: "/accountpage", component: Accountpage, beforeEnter: ifAuthenticated},
-    { path: "/checkout", component: Checkout},
-    { path: "/order/:id", component: Order},
-    { path: "/chatbox", component: Chatbox}
-
-
-
-    
-
-    
-    
+    { path: "/", component: Home },
+    { path: "/collection", component: Collection },
+    { path: "/login", component: Login },
+    { path: "/explore", component: Explore },
+    { path: "/cart", component: Cart },
+    { path: "/aboutus", component: Aboutus },
+    { path: "/byyou", component: Byyou },
+    { path: "/register", component: Register },
+    { path: "/forgotpassword", component: Forgotpassword },
+    { path: "/product/:id", component: Product },
+    { path: "/accountpage", component: Accountpage, beforeEnter: ifAuthenticated },
+    { path: "/checkout", component: Checkout },
+    { path: "/order/:id", component: Order },
+    { path: "/chatbox", component: Chatbox }
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory('/Fullstack-App/'),  // Use the base URL
     routes,
 })
 
