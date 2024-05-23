@@ -1,0 +1,195 @@
+/* Background/Text/Headers */
+body {
+  color: #e8d8b7;
+  background-color: white;
+  
+}
+
+h1 {
+  color: rgb(22, 22, 22);
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+
+p {
+  text-align: center;
+  font-family: verdana;
+  font-size: 20px;
+}
+
+/* Login form /* 
+
+/* Bordered form */
+form {
+  border: 3px solid rgb(225, 223, 223);
+}
+
+/* Full-width inputs */
+input[type=email], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid rgb(3, 3, 3);
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: rgb(10, 10, 10);
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  color: rgb(10, 10, 10);
+  opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* The "Forgot password" text */
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}
+
+/* Reset styles */
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+/* Navigation bar styles */
+.navbar {
+background-color: #f1f1f1dc; /* Background color */
+display: flex;
+justify-content: center;
+}
+
+.navbar ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+display: flex; /* Flexbox for horizontal layout */
+}
+
+.navbar li {
+margin-right: 20px; /* Spacing between menu items */
+}
+
+.navbar li:last-child {
+margin-right: 0; /* Remove margin from last item */
+}
+
+.navbar a {
+color: #000; /* Text color */
+text-decoration: none;
+padding: 8px 125px; /* Padding around text */
+display: inline-block;
+}
+
+.navbar a:hover {
+background-color: rgb(103, 103, 103); /* Background color on hover */
+color: white; /* Text color on hover */
+}
+
+.slideimg {
+position: absolute;
+height: 500px;
+width: auto;
+}
+
+.slideshow {
+width: 100%;
+height: 500px;
+display: flex;
+}
+
+.slideshow-container {
+width: 100%;
+height: 500px;
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+}
+
+#img1 {
+display: block;
+}
+
+#img2, #img3 {
+display: none;
+}
+
+.buttonleft {
+height: 600px;
+width: auto;
+position: absolute;
+left: 0%;
+place-items: center;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.buttonright {
+height: 600px;
+width: auto;
+position: absolute;
+right: 0%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.buttonslide {
+font-size: 50px;
+background-color: transparent;
+}
+
+
