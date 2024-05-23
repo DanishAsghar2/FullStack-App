@@ -2,10 +2,9 @@
   <div class="container">
     <h1 class="title">Discover <span class="highlight">Our Exclusive And Sustainable</span> Fragrances</h1>
     <transition-group name="fade" tag="div" class="products" @before-enter="beforeEnter" @enter="enter">
-      <!-- Product items with "Add to Cart" buttons -->
       <div v-for="(fragrance, index) in fragrances" :key="index" class="product" :data-index="index" tabindex="0" @mouseover="applyParallax" @mouseleave="resetParallax" @keydown.enter="addToCart(fragrance)">
         <div class="product-container" @click="addToCart(fragrance)">
-          <img v-bind:src="'/assets/' + fragrance.name + '.png'" :alt="fragrance.name" class="product-image">
+          <img :src="`/assets/${fragrance.name}.png`" :alt="fragrance.name" class="product-image">
         </div>
         <p class="product-name">{{ fragrance.name }}</p>
         <p class="product-price">£{{ fragrance.price }}</p>
@@ -27,7 +26,7 @@ export default {
     return {
       fragrances: [],
       error: "",
-      staggerDelay: 100 // Delay between each product animation (in milliseconds)
+      staggerDelay: 100
     };
   },
   created() {
@@ -46,8 +45,8 @@ export default {
     addToCart(fragrance) {
       let userId = localStorage.getItem('user_id');
       userId = parseInt(userId);
-      console.log(fragrance.fragrance_id, fragrance.price, userId, 1);
-      cartService.addItem(fragrance.fragrance_id, fragrance.price, userId, 1)
+      console.log(fragrance.id, fragrance.price, userId, 1);
+      cartService.addItem(fragrance.id, fragrance.price, userId, 1)
         .then(() => {
           console.log('Product added to cart:', fragrance.name);
           fragrance.addedToCart = true;
@@ -55,7 +54,6 @@ export default {
         .catch(error => this.error = error);
     },
     goToExplorepage2() {
-      // Navigate to ExplorePage2
       this.$router.push('/explorepage2');
     },
     applyParallax(event) {
