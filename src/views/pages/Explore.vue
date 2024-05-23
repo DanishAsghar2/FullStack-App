@@ -5,7 +5,7 @@
       <!-- Product items with "Add to Cart" buttons -->
       <div v-for="(fragrance, index) in fragrances" :key="index" class="product" :data-index="index" tabindex="0" @mouseover="applyParallax" @mouseleave="resetParallax" @keydown.enter="addToCart(fragrance)">
         <div class="product-container" @click="addToCart(fragrance)">
-          <img :src="`/assets/${fragrance.name}.png`" :alt="fragrance.name" class="product-image">
+          <img v-bind:src="'/assets/' + fragrance.name + '.png'" :alt="fragrance.name" class="product-image">
         </div>
         <p class="product-name">{{ fragrance.name }}</p>
         <p class="product-price">£{{ fragrance.price }}</p>
@@ -83,7 +83,6 @@ export default {
 </script>
 
 <style>
-/* Your existing styles */
 .container {
   max-width: 1200px;
   margin: 0 auto;
